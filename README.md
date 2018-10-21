@@ -66,3 +66,5 @@ belongs_to :user, :prototype
 - content
 - user_id
 - prototype_id
+
+<!-- kohei -->
