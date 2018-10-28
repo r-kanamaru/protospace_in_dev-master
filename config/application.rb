@@ -16,6 +16,7 @@ module Miuraspace
       g.stylesheets          false
       g.javascripts          false
     end
+
+    config.assets.initialize_on_precompile = false
   end
 end
-config.assets.initialize_on_precompile = false
