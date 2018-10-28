@@ -21,10 +21,9 @@ class PrototypesController < ApplicationController
 
   def edit
     @prototype = Prototype.find(params[:id])
-    proto = @prototype
-    @title = proto.title
-    @concept = proto.concept
-    @catch_copy = proto.catch_copy
+  end
+
+  def update
   end
 
   def show
