@@ -13,7 +13,9 @@
             = link_to "#{@prototype.user.name}", user_path(@prototype.user)
             .degree
               = @prototype.user.position
+
           .btn
+            -# - if user_signed_in? && current_user.id == @prototype.user_id
             = link_to "Edit", edit_prototype_path
   .row
     .col-md-9.image-box
