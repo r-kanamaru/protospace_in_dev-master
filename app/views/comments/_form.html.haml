@@ -1,0 +1,18 @@
+.container.proto-new
+  = form_for [prototype,comment] do |f|
+    .col-md-8.col-md-offset-2
+      %header.row.user-nav.row
+        .col-md-12
+          %h2
+            = action_name
+        .col-md-12
+          %h3
+            = prototype.title
+        .col-md-9.image-box
+          = image_tag(prototype.set_main_thumbnail.large, class: 'img-responsive img-size-fix', style: "margin: 0 auto;")
+        .col-md-12{style: "margin-top: 20px;"}
+          %h4 Text
+          .proto-new-title
+            = f.text_field :comment, autofocus: true, placeholder: "Input Comment"
+    .row.text-center.proto-btn
+      = f.submit id: "button", class: "btn btn-lg btn-primary btn-block"

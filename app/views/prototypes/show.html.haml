@@ -20,7 +20,7 @@
 
           .proto-delete
             - if user_signed_in? && current_user.id == @prototype.user_id
-              = link_to '削除', "/prototypes/#{@prototype.id}", method: :delete, data: {confirm:"本当に削除しますか"}
+              = link_to 'Delete', "/prototypes/#{@prototype.id}", method: :delete, data: {confirm:"本当に削除しますか"}
 
   .row
     .col-md-9.image-box
@@ -41,9 +41,48 @@
         = @prototype.concept
     - if user_signed_in? && current_user.id == @prototype.user_id
       .col-md-3
-        %h4 Edit
+        %h4 Tag List
         %ul.proto-tag-list.list-inline
           %li
-
+            %a{href: "#", class: "btn btn-default"} iPad
           %li
+            %a{href: "#", class: "btn btn-default"} wireframe
+
+
+  -# commentのview
+  .row
+    .col-md-2
+      %h4 コメント
+    .col-md-3
+      -if user_signed_in?
+        =link_to "comment", "/prototypes/#{@prototype.id}/comments/new",{class: "btn btn-default"}
+      -else
+        =link_to "comment", new_user_session_path,{class: "btn btn-default"}
+
+  .row{style: "margin-top: 10px;"}
+    - @prototype.comments.order("updated_at desc").each do |comment|
+      .col-md-9
+        .panel.panel-default
+          .panel-heading
+            %h3.panel-title
+              - if user_signed_in?
+                - if user_signed_in? && current_user.id == comment.user_id
+                  %ul{style: "list-style: none; padding-left: 0px;"}
+                    %li.dropdown
+                      = link_to "#", class: 'dropdown-toggle color__black', role: 'button', 'aria-expanded' =>  'false', 'data-toggle' => 'dropdown' do
+                        #{comment.user.name}
+                      %ul.dropdown-menu{role: "menu"}
+                        %li
+                          = link_to 'Edit', edit_prototype_comment_path(comment.prototype_id,comment.id)
+                        %li
+                          = link_to 'Delete',prototype_comment_path(comment.prototype_id,comment.id),method: :delete, data: {confirm:"本当に削除しますか"}
+
+                - else
+                  =comment.user.name
+              - else
+                =comment.user.name
+          .panel-body
+            =comment.comment
+
+
 
