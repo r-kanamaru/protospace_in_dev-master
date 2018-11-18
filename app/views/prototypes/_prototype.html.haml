@@ -10,5 +10,15 @@
         .proto-delete
           - if user_signed_in? && current_user.id == prototype.user_id
             = link_to '削除', "/prototypes/#{prototype.id}", method: :delete, data: {confirm:"本当に削除しますか"}
+        .like-content{"data-id": "#{prototype.id}"}
+          - if prototype.like_user(current_user)
+            - like = current_user.likes.find_by(prototype_id: prototype.id)
+            #dislike-button{"data-button-id": "#{prototype.id}", "data-likebutton-id": "#{like.id}"}
+              = image_tag("icon_heart_red.svg")
+            = like_count = prototype.likes.all.count
+          -else
+            #like-button{"data-button-id": "#{prototype.id}"}
+              = image_tag("icon_heart.svg")
+            =prototype.likes.all.count
         .proto-posted
           = prototype.posted_date

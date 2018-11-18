@@ -40,3 +40,8 @@
           %a{href: "#", class: "btn btn-default"} iPad
         %li
           %a{href: "#", class: "btn btn-default"} wireframe
+      / %li#like-button{"data-button-id": "#{@prototype.id}"}
+      /   like
+      /   = image_tag("icon_heart.svg")
+      .like-content{"data-id": "#{@prototype.id}"}
+        = render partial: "likes/like", locals: { prototype: @prototype }

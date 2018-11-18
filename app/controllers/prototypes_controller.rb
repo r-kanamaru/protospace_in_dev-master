@@ -1,5 +1,6 @@
 class PrototypesController < ApplicationController
   before_action :set_prototype, only: [:show, :destroy]
+  before_action :set_like, only: [:index]
 
   def index
     @prototypes = Prototype.all
@@ -20,6 +21,14 @@ class PrototypesController < ApplicationController
   end
 
   def show
+    @prototype = Prototype.find(params[:id])
+    @like = current_user.likes.find_by(prototype_id: params[:id])
+    @likes = Like.where(prototype_id: params[:id])
+    @likes_count = @likes.count
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def destroy
@@ -32,6 +41,12 @@ class PrototypesController < ApplicationController
 
   def set_prototype
     @prototype = Prototype.find(params[:id])
+  end
+
+  def set_like
+    @like = current_user.likes.find_by(prototype_id: params[:id])
+    @likes = Like.where(prototype_id: params[:id])
+    @likes_count = @likes.count
   end
 
   def prototype_params
