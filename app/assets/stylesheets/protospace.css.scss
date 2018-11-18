@@ -643,3 +643,23 @@ body {
   color: #a94442;
 }
 }
+
+#like-button {
+  height: 20px;
+  width: 20px;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#dislike-button {
+  height: 20px;
+  width: 20px;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.like-count {
+  float: left;
+}

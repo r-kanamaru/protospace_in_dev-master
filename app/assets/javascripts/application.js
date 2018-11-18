@@ -16,6 +16,7 @@
 //= require bootstrap
 //= require_tree .
 
+
 $(function(){
 
   //inputの値が変更になると処理を実行
@@ -72,3 +73,4 @@ $(function(){
   fileReader.readAsDataURL(file);
   });
 });
+
