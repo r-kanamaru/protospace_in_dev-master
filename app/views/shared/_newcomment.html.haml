@@ -2,6 +2,6 @@
   %h4 コメント
 .col-md-3
   -if user_signed_in?
-    =link_to "comment", "/prototypes/#{@prototype.id}/comments/new", remote: true, class: "btn btn-default",id: "newcomment"
+    =link_to "comment", "/prototypes/#{@prototype.id}/comments/new", remote: true, class: "btn btn-default"
   -else
     =link_to "comment", new_user_session_path,{class: "btn btn-default"}
