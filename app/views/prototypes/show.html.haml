@@ -20,7 +20,7 @@
 
           .proto-delete
             - if user_signed_in? && current_user.id == @prototype.user_id
-              = link_to '削除', "/prototypes/#{@prototype.id}", method: :delete, data: {confirm:"本当に削除しますか"}
+              = link_to 'Delete', "/prototypes/#{@prototype.id}", method: :delete, data: {confirm:"本当に削除しますか"}
 
   .row
     .col-md-9.image-box
@@ -41,9 +41,22 @@
         = @prototype.concept
     - if user_signed_in? && current_user.id == @prototype.user_id
       .col-md-3
-        %h4 Edit
+        %h4 Tag List
         %ul.proto-tag-list.list-inline
           %li
-
+            %a{href: "#", class: "btn btn-default"} iPad
           %li
+            %a{href: "#", class: "btn btn-default"} wireframe
+
+
+  -# commentのview
+  .row#newcommentarea
+    =render "shared/newcomment"
+
+
+  .row#commentarea
+    =render "shared/comment", locals: { prototype: @prototype}
+
+
+
 

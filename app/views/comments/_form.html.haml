@@ -1,0 +1,10 @@
+= form_for [prototype,comment], data: {remote: true} do |f|
+  .col-md-9
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title
+          = current_user.name
+      .panel-body
+        = f.text_area :comment, autofocus: true, placeholder: "Input Comment", size: "100x2"
+    .row.text-center.proto-btn.col-md-4
+      = f.submit id: "button",class: "btn btn-lg btn-primary btn-block"
