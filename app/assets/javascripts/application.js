@@ -21,7 +21,7 @@ $(function(){
     //imgにsrcを生成、event.targetはev発生源の要素値（画像）取得
     //imgにclassを生成
       img.attr('src', event.target.result);
-      img.attr('class','set_img')
+      img.attr('class','set_img');
 
     //一旦、widthとheightの値を削除する
     //アスペクト比を保持したまま枠一杯に拡大させる処理
@@ -34,8 +34,11 @@ $(function(){
         if(asp >= 1){
           img.attr('width','100%');
           img.attr('height','asp_w_h%');
-        }else{
+        }else if(asp < 1){
           img.attr('width','asp_w_h%');
+          img.attr('height','100%');
+        }else{
+          img.attr('width','100%');
           img.attr('height','100%');
         };
 
