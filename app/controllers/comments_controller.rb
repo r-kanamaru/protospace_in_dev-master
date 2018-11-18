@@ -7,11 +7,11 @@ class CommentsController < ApplicationController
 
   def create
     set_prototype
-    @comment = Comment.new(comment_params)
+    @comment = @prototype.comments.build(comment_params)
     if @comment.save
-      redirect_to "/prototypes/#{@prototype.id}", notice: 'New prototype was successfully created'
+      render :show
     else
-      redirect_to "/prototypes/#{@prototype.id}/comments/new", alert: 'YNew prototype was unsuccessfully created'
+      render :new
     end
   end
 
@@ -23,17 +23,18 @@ class CommentsController < ApplicationController
   def update
     set_prototype
     set_comment
-    @comment.update(comment_params)
-    redirect_to "/prototypes/#{@prototype.id}"
+    if @comment.update(comment_params)
+      render :show
+    else
+      render :edit
+    end
   end
 
   def destroy
     set_prototype
     set_comment
-    if @comment.user_id == current_user.id
-      @comment.destroy
-      redirect_to "/prototypes/#{@prototype.id}"
-    end
+    @comment.destroy
+    render :index
   end
 
   private

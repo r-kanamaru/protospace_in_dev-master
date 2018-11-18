@@ -1,0 +1,3 @@
+$("#commentarea").html("<%= j(render partial: 'index', locals: { prototype: @prototype}) %>")
+
+$("#newcommentarea").html("<%= j(render partial: 'shared/newcomment', locals: { prototype: @prototype}) %>")
