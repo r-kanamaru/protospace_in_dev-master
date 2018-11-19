@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+'ruby' '2.3.1'
 gem 'rails', '4.2.8'
 gem 'mysql2', '~> 0.3.18'
 gem 'sass-rails', '~> 5.0'
@@ -16,6 +17,7 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'carrierwave'
 gem 'rmagick'
+gem 'puma', '~> 3.7'
 
 group :development, :test do
   gem 'byebug'
